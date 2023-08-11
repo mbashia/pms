@@ -1,0 +1,45 @@
+<h1>Listing Leases</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <.modal return_to={Routes.lease_index_path(@socket, :index)}>
+    <.live_component
+      module={PropertyManagementSystemWeb.LeaseLive.FormComponent}
+      id={@lease.id || :new}
+      title={@page_title}
+      action={@live_action}
+      lease={@lease}
+      return_to={Routes.lease_index_path(@socket, :index)}
+    />
+  </.modal>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Rent amount</th>
+      <th>Start date</th>
+      <th>End date</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="leases">
+    <%= for lease <- @leases do %>
+      <tr id={"lease-#{lease.id}"}>
+        <td><%= lease.status %></td>
+        <td><%= lease.rent_amount %></td>
+        <td><%= lease.start_date %></td>
+        <td><%= lease.end_date %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.lease_show_path(@socket, :show, lease) %></span>
+          <span><%= live_patch "Edit", to: Routes.lease_index_path(@socket, :edit, lease) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: lease.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Lease", to: Routes.lease_index_path(@socket, :new) %></span>

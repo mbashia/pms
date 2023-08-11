@@ -1,0 +1,61 @@
+<h1>Show House</h1>
+
+<%= if @live_action in [:edit] do %>
+  <.modal return_to={Routes.house_show_path(@socket, :show, @house)}>
+    <.live_component
+      module={PropertyManagementSystemWeb.HouseLive.FormComponent}
+      id={@house.id}
+      title={@page_title}
+      action={@live_action}
+      house={@house}
+      return_to={Routes.house_show_path(@socket, :show, @house)}
+    />
+  </.modal>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>House number:</strong>
+    <%= @house.house_number %>
+  </li>
+
+  <li>
+    <strong>Rent amount:</strong>
+    <%= @house.rent_amount %>
+  </li>
+
+  <li>
+    <strong>Size:</strong>
+    <%= @house.size %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @house.description %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @house.status %>
+  </li>
+
+  <li>
+    <strong>Date occupied:</strong>
+    <%= @house.date_occupied %>
+  </li>
+
+  <li>
+    <strong>Date vacated:</strong>
+    <%= @house.date_vacated %>
+  </li>
+
+  <li>
+    <strong>Floor number:</strong>
+    <%= @house.floor_number %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.house_show_path(@socket, :edit, @house), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.house_index_path(@socket, :index) %></span>

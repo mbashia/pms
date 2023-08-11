@@ -1,0 +1,41 @@
+<h1>Show Lease</h1>
+
+<%= if @live_action in [:edit] do %>
+  <.modal return_to={Routes.lease_show_path(@socket, :show, @lease)}>
+    <.live_component
+      module={PropertyManagementSystemWeb.LeaseLive.FormComponent}
+      id={@lease.id}
+      title={@page_title}
+      action={@live_action}
+      lease={@lease}
+      return_to={Routes.lease_show_path(@socket, :show, @lease)}
+    />
+  </.modal>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @lease.status %>
+  </li>
+
+  <li>
+    <strong>Rent amount:</strong>
+    <%= @lease.rent_amount %>
+  </li>
+
+  <li>
+    <strong>Start date:</strong>
+    <%= @lease.start_date %>
+  </li>
+
+  <li>
+    <strong>End date:</strong>
+    <%= @lease.end_date %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.lease_show_path(@socket, :edit, @lease), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.lease_index_path(@socket, :index) %></span>

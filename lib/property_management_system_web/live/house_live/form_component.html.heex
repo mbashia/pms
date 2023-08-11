@@ -1,0 +1,48 @@
+<div>
+  <h2><%= @title %></h2>
+
+  <.form
+    let={f}
+    for={@changeset}
+    id="house-form"
+    phx-target={@myself}
+    phx-change="validate"
+    phx-submit="save">
+  
+    <%= label f, :house_number %>
+    <%= text_input f, :house_number %>
+    <%= error_tag f, :house_number %>
+  
+    <%= label f, :rent_amount %>
+    <%= number_input f, :rent_amount, step: "any" %>
+    <%= error_tag f, :rent_amount %>
+  
+    <%= label f, :size %>
+    <%= number_input f, :size, step: "any" %>
+    <%= error_tag f, :size %>
+  
+    <%= label f, :description %>
+    <%= textarea f, :description %>
+    <%= error_tag f, :description %>
+  
+    <%= label f, :status %>
+    <%= text_input f, :status %>
+    <%= error_tag f, :status %>
+  
+    <%= label f, :date_occupied %>
+    <%= date_select f, :date_occupied %>
+    <%= error_tag f, :date_occupied %>
+  
+    <%= label f, :date_vacated %>
+    <%= date_select f, :date_vacated %>
+    <%= error_tag f, :date_vacated %>
+  
+    <%= label f, :floor_number %>
+    <%= text_input f, :floor_number %>
+    <%= error_tag f, :floor_number %>
+  
+    <div>
+      <%= submit "Save", phx_disable_with: "Saving..." %>
+    </div>
+  </.form>
+</div>
