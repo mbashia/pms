@@ -2,6 +2,11 @@ defmodule PropertyManagementSystem.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
   alias PropertyManagementSystem.Propertys.Property
+  alias PropertyManagementSystem.Leases.Lease
+  alias PropertyManagementSystem.Maintenance_requests.Maintenance_request
+  alias PropertyManagementSystem.Houses.House
+
+
 
   schema "users" do
     field :email, :string
@@ -9,6 +14,9 @@ defmodule PropertyManagementSystem.Accounts.User do
     field :hashed_password, :string, redact: true
     field :confirmed_at, :naive_datetime
     has_many :propertys, Property
+    has_many :leases, Lease
+    has_many :maintenance_requests, Maintenance_request
+    has_many :houses, House
     timestamps()
   end
 

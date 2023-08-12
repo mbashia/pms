@@ -41,6 +41,8 @@ defmodule PropertyManagementSystemWeb.LeaseLive.FormComponent do
   end
 
   defp save_lease(socket, :new, lease_params) do
+    lease_params = Map.put(lease_params, "user_id", socket.assigns.user.id)
+
     case Leases.create_lease(lease_params) do
       {:ok, _lease} ->
         {:noreply,

@@ -41,6 +41,8 @@ defmodule PropertyManagementSystemWeb.HouseLive.FormComponent do
   end
 
   defp save_house(socket, :new, house_params) do
+    house_params = Map.put(house_params, "user_id", socket.assigns.user.id)
+
     case Houses.create_house(house_params) do
       {:ok, _house} ->
         {:noreply,

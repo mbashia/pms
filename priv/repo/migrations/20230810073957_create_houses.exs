@@ -11,8 +11,12 @@ defmodule PropertyManagementSystem.Repo.Migrations.CreateHouses do
       add :date_occupied, :date
       add :date_vacated, :date
       add :floor_number, :string
+      add :user_id, references(:users, on_delete: :nothing)
+
 
       timestamps()
     end
+    create index(:houses, [:user_id])
+
   end
 end

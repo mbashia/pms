@@ -7,6 +7,7 @@
       id={@property.id || :new}
       title={@page_title}
       action={@live_action}
+      user = {@user}
       property={@property}
       return_to={Routes.property_index_path(@socket, :index)}
     />

@@ -7,6 +7,7 @@
       id={@maintenance_request.id || :new}
       title={@page_title}
       action={@live_action}
+      user = {@user}
       maintenance_request={@maintenance_request}
       return_to={Routes.maintenance_request_index_path(@socket, :index)}
     />

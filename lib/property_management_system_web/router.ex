@@ -55,7 +55,11 @@ defmodule PropertyManagementSystemWeb.Router do
   end
 
   ## Authentication routes
+  scope "/", PropertyManagementSystemWeb do
+    pipe_through [:browser]
+    get "/", PageController, :index
 
+  end
   scope "/", PropertyManagementSystemWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
 
@@ -71,7 +75,6 @@ defmodule PropertyManagementSystemWeb.Router do
 
   scope "/", PropertyManagementSystemWeb do
     pipe_through [:browser, :require_authenticated_user]
-    get "/", PageController, :index
     live "/propertys", PropertyLive.Index, :index
     live "/propertys/new", PropertyLive.Index, :new
     live "/propertys/:id/edit", PropertyLive.Index, :edit

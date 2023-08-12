@@ -3,10 +3,17 @@ defmodule PropertyManagementSystemWeb.LeaseLive.Index do
 
   alias PropertyManagementSystem.Leases
   alias PropertyManagementSystem.Leases.Lease
+  alias PropertyManagementSystem.Accounts
+
 
   @impl true
-  def mount(_params, _session, socket) do
-    {:ok, assign(socket, :leases, list_leases())}
+  def mount(_params, session, socket) do
+    user = Accounts.get_user_by_session_token(session["user_token"])
+
+    {:ok,
+    socket
+    |>assign(:user, user)
+    |>assign(:leases, list_leases())}
   end
 
   @impl true

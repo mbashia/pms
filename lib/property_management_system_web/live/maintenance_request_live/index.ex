@@ -3,10 +3,16 @@ defmodule PropertyManagementSystemWeb.Maintenance_requestLive.Index do
 
   alias PropertyManagementSystem.Maintenance_requests
   alias PropertyManagementSystem.Maintenance_requests.Maintenance_request
+  alias PropertyManagementSystem.Accounts
 
   @impl true
-  def mount(_params, _session, socket) do
-    {:ok, assign(socket, :maintenance_requests, list_maintenance_requests())}
+  def mount(_params, session, socket) do
+    user = Accounts.get_user_by_session_token(session["user_token"])
+
+    {:ok,
+    socket
+    |>assign(:user, user)
+    |>assign( :maintenance_requests, list_maintenance_requests())}
   end
 
   @impl true

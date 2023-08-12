@@ -1,6 +1,8 @@
 defmodule PropertyManagementSystem.Houses.House do
   use Ecto.Schema
   import Ecto.Changeset
+  alias PropertyManagementSystem.Accounts.User
+
 
   schema "houses" do
     field :date_occupied, :date
@@ -11,6 +13,9 @@ defmodule PropertyManagementSystem.Houses.House do
     field :rent_amount, :float
     field :size, :float
     field :status, :string
+    belongs_to :user, User
+
+
 
     timestamps()
   end
@@ -26,7 +31,8 @@ defmodule PropertyManagementSystem.Houses.House do
       :status,
       :date_occupied,
       :date_vacated,
-      :floor_number
+      :floor_number,
+      :user_id
     ])
     |> validate_required([
       :house_number,
@@ -36,7 +42,8 @@ defmodule PropertyManagementSystem.Houses.House do
       :status,
       :date_occupied,
       :date_vacated,
-      :floor_number
+      :floor_number,
+      :user_id
     ])
   end
 end

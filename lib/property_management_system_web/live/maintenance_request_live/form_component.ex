@@ -44,6 +44,8 @@ defmodule PropertyManagementSystemWeb.Maintenance_requestLive.FormComponent do
   end
 
   defp save_maintenance_request(socket, :new, maintenance_request_params) do
+    maintenance_request_params = Map.put(maintenance_request_params, "user_id", socket.assigns.user.id)
+
     case Maintenance_requests.create_maintenance_request(maintenance_request_params) do
       {:ok, _maintenance_request} ->
         {:noreply,
