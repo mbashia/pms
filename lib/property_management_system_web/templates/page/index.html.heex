@@ -1,1 +1,9 @@
-log in as landlord login as tenant login as manager
+
+
+<h6>  <%= link "Register as landlord", to: Routes.user_registration_path(@conn, :new) %>
+</h6>
+
+<h6>  <%= link "Register as tenant", to: Routes.user_registration_path(@conn, :newtenant) %>
+</h6>
+<h6>  <%= link "Register as manager", to: Routes.user_registration_path(@conn, :newmanager) %>
+</h6>

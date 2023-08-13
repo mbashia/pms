@@ -65,6 +65,13 @@ defmodule PropertyManagementSystemWeb.Router do
 
     get "/users/register", UserRegistrationController, :new
     post "/users/register", UserRegistrationController, :create
+    get "/tenant/register", UserRegistrationController, :newtenant
+    post "/tenant/register", UserRegistrationController, :createtenant
+    get "/manager/register", UserRegistrationController, :newmanager
+    post "/manager/register", UserRegistrationController, :createmanager
+
+
+
     get "/users/log_in", UserSessionController, :new
     post "/users/log_in", UserSessionController, :create
     get "/users/reset_password", UserResetPasswordController, :new

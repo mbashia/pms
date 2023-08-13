@@ -13,6 +13,7 @@ defmodule PropertyManagementSystem.Accounts.User do
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
     field :confirmed_at, :naive_datetime
+    field :role, :string
     has_many :propertys, Property
     has_many :leases, Lease
     has_many :maintenance_requests, Maintenance_request
@@ -39,7 +40,8 @@ defmodule PropertyManagementSystem.Accounts.User do
   """
   def registration_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:email, :password])
+    |> cast(attrs, [:email, :password, :role])
+    |>validate_required([:role])
     |> validate_email()
     |> validate_password(opts)
   end
