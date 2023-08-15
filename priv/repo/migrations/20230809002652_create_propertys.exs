@@ -9,11 +9,12 @@ defmodule PropertyManagementSystem.Repo.Migrations.CreatePropertys do
       add :status, :string
       add :size, :string
       add :description, :text
+      add :image, :string
       add :user_id, references(:users, on_delete: :nothing)
 
       timestamps()
     end
-    create index(:propertys, [:user_id])
 
+    create index(:propertys, [:user_id])
   end
 end

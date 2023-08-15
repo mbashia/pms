@@ -3,7 +3,6 @@ defmodule PropertyManagementSystem.Leases.Lease do
   import Ecto.Changeset
   alias PropertyManagementSystem.Accounts.User
 
-
   schema "leases" do
     field :end_date, :date
     field :rent_amount, :float

@@ -10,9 +10,9 @@ defmodule PropertyManagementSystemWeb.Maintenance_requestLive.Index do
     user = Accounts.get_user_by_session_token(session["user_token"])
 
     {:ok,
-    socket
-    |>assign(:user, user)
-    |>assign( :maintenance_requests, list_maintenance_requests())}
+     socket
+     |> assign(:user, user)
+     |> assign(:maintenance_requests, list_maintenance_requests())}
   end
 
   @impl true

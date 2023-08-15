@@ -9,10 +9,9 @@ defmodule PropertyManagementSystem.Repo.Migrations.CreateMaintenanceRequests do
       add :cost, :float
       add :user_id, references(:users, on_delete: :nothing)
 
-
       timestamps()
     end
-    create index(:maintenance_requests, [:user_id])
 
+    create index(:maintenance_requests, [:user_id])
   end
 end

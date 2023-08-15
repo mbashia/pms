@@ -5,12 +5,19 @@ defmodule PropertyManagementSystemWeb.PropertyLive.FormComponent do
 
   @impl true
   def update(%{property: property} = assigns, socket) do
+    IO.write("first assigns starts here")
+    IO.inspect(socket)
     changeset = Propertys.change_property(property)
 
     {:ok,
      socket
      |> assign(assigns)
-     |> assign(:changeset, changeset)}
+     |> assign(:changeset, changeset)
+     |> assign(:uploaded_files, [])
+     |> allow_upload(:image, accept: ~w(.jpg .png .jpeg), max_entries: 1)
+   }
+   
+
   end
 
   @impl true
@@ -24,7 +31,6 @@ defmodule PropertyManagementSystemWeb.PropertyLive.FormComponent do
   end
 
   def handle_event("save", %{"property" => property_params}, socket) do
-
     save_property(socket, socket.assigns.action, property_params)
   end
 
@@ -43,8 +49,6 @@ defmodule PropertyManagementSystemWeb.PropertyLive.FormComponent do
 
   defp save_property(socket, :new, property_params) do
     property_params = Map.put(property_params, "user_id", socket.assigns.user.id)
-
-
 
     case Propertys.create_property(property_params) do
       {:ok, _property} ->

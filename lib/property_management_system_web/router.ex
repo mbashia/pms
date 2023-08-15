@@ -58,8 +58,8 @@ defmodule PropertyManagementSystemWeb.Router do
   scope "/", PropertyManagementSystemWeb do
     pipe_through [:browser]
     get "/", PageController, :index
-
   end
+
   scope "/", PropertyManagementSystemWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
 
@@ -69,8 +69,6 @@ defmodule PropertyManagementSystemWeb.Router do
     post "/tenant/register", UserRegistrationController, :createtenant
     get "/manager/register", UserRegistrationController, :newmanager
     post "/manager/register", UserRegistrationController, :createmanager
-
-
 
     get "/users/log_in", UserSessionController, :new
     post "/users/log_in", UserSessionController, :create

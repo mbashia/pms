@@ -9,19 +9,19 @@ defmodule PropertyManagementSystemWeb.UserRegistrationController do
     changeset = Accounts.change_user_registration(%User{})
     render(conn, "new.html", changeset: changeset)
   end
+
   def newtenant(conn, _params) do
     changeset = Accounts.change_user_registration(%User{})
     render(conn, "tenant.html", changeset: changeset)
   end
+
   def newmanager(conn, _params) do
     changeset = Accounts.change_user_registration(%User{})
     render(conn, "manager.html", changeset: changeset)
   end
 
   def create(conn, %{"user" => user_params}) do
-    IO.inspect(user_params)
     user_params = Map.put(user_params, "role", "landlord")
-    IO.inspect(user_params)
 
     case Accounts.register_user(user_params) do
       {:ok, user} ->
@@ -39,6 +39,7 @@ defmodule PropertyManagementSystemWeb.UserRegistrationController do
         render(conn, "new.html", changeset: changeset)
     end
   end
+
   def createtenant(conn, %{"user" => user_params}) do
     user_params = Map.put(user_params, "role", "tenant")
 
@@ -58,6 +59,7 @@ defmodule PropertyManagementSystemWeb.UserRegistrationController do
         render(conn, "new.html", changeset: changeset)
     end
   end
+
   def createmanager(conn, %{"user" => user_params}) do
     user_params = Map.put(user_params, "role", "manager")
 

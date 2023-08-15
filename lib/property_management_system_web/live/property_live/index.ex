@@ -8,9 +8,8 @@ defmodule PropertyManagementSystemWeb.PropertyLive.Index do
   @impl true
   def mount(_params, session, socket) do
     IO.write("session starts here /n")
-    IO.inspect(session)
     user = Accounts.get_user_by_session_token(session["user_token"])
- IO.inspect user
+
     {:ok,
      socket
      |> assign(:user, user)

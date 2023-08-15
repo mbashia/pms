@@ -3,7 +3,6 @@ defmodule PropertyManagementSystem.Houses.House do
   import Ecto.Changeset
   alias PropertyManagementSystem.Accounts.User
 
-
   schema "houses" do
     field :date_occupied, :date
     field :date_vacated, :date
@@ -14,8 +13,6 @@ defmodule PropertyManagementSystem.Houses.House do
     field :size, :float
     field :status, :string
     belongs_to :user, User
-
-
 
     timestamps()
   end

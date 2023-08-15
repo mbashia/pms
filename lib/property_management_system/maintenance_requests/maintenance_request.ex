@@ -3,7 +3,6 @@ defmodule PropertyManagementSystem.Maintenance_requests.Maintenance_request do
   import Ecto.Changeset
   alias PropertyManagementSystem.Accounts.User
 
-
   schema "maintenance_requests" do
     field :cost, :float
     field :description, :string

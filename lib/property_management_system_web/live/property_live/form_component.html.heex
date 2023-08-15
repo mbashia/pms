@@ -33,6 +33,8 @@
     <%= textarea f, :description %>
     <%= error_tag f, :description %>
   
+    <%= label f, :image %>
+     <%= live_file_input @uploads.image %>
     <div>
       <%= submit "Save", phx_disable_with: "Saving..." %>
     </div>

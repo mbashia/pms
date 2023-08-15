@@ -5,15 +5,14 @@ defmodule PropertyManagementSystemWeb.HouseLive.Index do
   alias PropertyManagementSystem.Houses.House
   alias PropertyManagementSystem.Accounts
 
-
   @impl true
   def mount(_params, session, socket) do
     user = Accounts.get_user_by_session_token(session["user_token"])
 
     {:ok,
-    socket
-    |>assign(:user, user)
-    |>assign( :houses, list_houses())}
+     socket
+     |> assign(:user, user)
+     |> assign(:houses, list_houses())}
   end
 
   @impl true

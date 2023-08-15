@@ -9,10 +9,9 @@ defmodule PropertyManagementSystem.Repo.Migrations.CreateLeases do
       add :end_date, :date
       add :user_id, references(:users, on_delete: :nothing)
 
-
       timestamps()
     end
-    create index(:leases, [:user_id])
 
+    create index(:leases, [:user_id])
   end
 end

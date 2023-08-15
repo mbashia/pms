@@ -13,10 +13,9 @@ defmodule PropertyManagementSystem.Repo.Migrations.CreateHouses do
       add :floor_number, :string
       add :user_id, references(:users, on_delete: :nothing)
 
-
       timestamps()
     end
-    create index(:houses, [:user_id])
 
+    create index(:houses, [:user_id])
   end
 end
