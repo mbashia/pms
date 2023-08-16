@@ -7,6 +7,8 @@ defmodule PropertyManagementSystem.Maintenance_requests do
   alias PropertyManagementSystem.Repo
 
   alias PropertyManagementSystem.Maintenance_requests.Maintenance_request
+  alias PropertyManagementSystem.Propertys.Property
+
 
   @doc """
   Returns the list of maintenance_requests.
@@ -19,6 +21,11 @@ defmodule PropertyManagementSystem.Maintenance_requests do
   """
   def list_maintenance_requests do
     Repo.all(Maintenance_request)
+  end
+  def get_property(id)do
+
+    Repo.all(from p in Property, where: p.user_id == ^id)
+
   end
 
   @doc """

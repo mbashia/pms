@@ -7,6 +7,7 @@ defmodule PropertyManagementSystem.Repo.Migrations.CreateMaintenanceRequests do
       add :description, :text
       add :status, :string
       add :cost, :float
+      add :property_id,:int
       add :user_id, references(:users, on_delete: :nothing)
 
       timestamps()

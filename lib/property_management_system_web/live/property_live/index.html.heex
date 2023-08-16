@@ -36,6 +36,13 @@
         <td><%= property.status %></td>
         <td><%= property.size %></td>
         <td><%= property.description %></td>
+         <td>
+    <img
+          src={property.image}
+          alt="property_image"
+           style="width: 100px; height: 100px; object-fit: cover;"
+            />
+      </td>
 
         <td>
           <span><%= live_redirect "Show", to: Routes.property_show_path(@socket, :show, property) %></span>

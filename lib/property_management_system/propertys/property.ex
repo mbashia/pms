@@ -2,6 +2,8 @@ defmodule PropertyManagementSystem.Propertys.Property do
   use Ecto.Schema
   import Ecto.Changeset
   alias PropertyManagementSystem.Accounts.User
+  alias PropertyManagementSystem.Maintenance_requests.Maintenance_request
+
 
   schema "propertys" do
     field :address, :string
@@ -12,6 +14,8 @@ defmodule PropertyManagementSystem.Propertys.Property do
     field :type, :string
     field :image, :string
     belongs_to :user, User
+    has_many :maintenace_requests, Maintenance_request
+
 
     timestamps()
   end
